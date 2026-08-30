@@ -3,6 +3,7 @@ package com.clarituz.application.ui;
 import com.clarituz.application.proposta.enums.CategoriaServico;
 import com.clarituz.application.proposta.FaseProposta;
 import com.clarituz.application.proposta.ItemProposta;
+import com.clarituz.application.ia.IaService;
 import com.clarituz.application.proposta.Proposta;
 import com.clarituz.application.proposta.PropostaService;
 import com.clarituz.application.proposta.enums.Recorrencia;
@@ -50,6 +51,7 @@ public class PropostaEditorView extends HorizontalLayout implements HasUrlParame
 
     private final PropostaService service;
     private final ViaCepService viaCep;
+    private final IaService iaService;
 
     private final Binder<Proposta> binder = new Binder<>(Proposta.class);
     private final PropostaPreview preview = new PropostaPreview();
@@ -98,9 +100,10 @@ public class PropostaEditorView extends HorizontalLayout implements HasUrlParame
 
     private Proposta proposta = new Proposta();
 
-    public PropostaEditorView(PropostaService service, ViaCepService viaCep) {
+    public PropostaEditorView(PropostaService service, ViaCepService viaCep, IaService iaService) {
         this.service = service;
         this.viaCep = viaCep;
+        this.iaService = iaService;
         setSizeFull();
         setPadding(false);
         setSpacing(false);
@@ -308,7 +311,9 @@ public class PropostaEditorView extends HorizontalLayout implements HasUrlParame
         TabSheet abas = new TabSheet();
         abas.setSizeFull();
         abas.add(new Tab("Cliente"), aba(secaoLogo(), formCliente()));
-        abas.add(new Tab("Narrativa"), aba(introducao, desafio, solucao, entregaveis));
+        abas.add(new Tab("Narrativa"),
+                aba(campoComIa(introducao, "Contexto"), campoComIa(desafio, "Desafio"),
+                        campoComIa(solucao, "Nossa solução"), campoComIa(entregaveis, "Entregáveis")));
         abas.add(new Tab("Escopo"), aba(barraItens(), editorItens));
         abas.add(new Tab("Cronograma"), aba(barraFases(), editorFases));
         abas.add(new Tab("Investimento"), aba(formInvestimento(), investimentoObs, condicoes, formaPagamento));
@@ -320,6 +325,49 @@ public class PropostaEditorView extends HorizontalLayout implements HasUrlParame
         layout.setPadding(false);
         layout.setWidthFull();
         return layout;
+    }
+
+    private VerticalLayout campoComIa(TextArea area, String secao) {
+        area.setWidthFull();
+        Button btn = new Button(VaadinIcon.MAGIC.create(), e -> otimizar(area, secao));
+        btn.addThemeVariants(ButtonVariant.LUMO_TERTIARY, ButtonVariant.LUMO_SMALL);
+        btn.setTooltipText("Melhorar com IA");
+
+        HorizontalLayout linha = new HorizontalLayout(area, btn);
+        linha.setWidthFull();
+        linha.setAlignItems(Alignment.START);
+        linha.expand(area);
+
+        VerticalLayout wrapper = new VerticalLayout(linha);
+        wrapper.setPadding(false);
+        wrapper.setWidthFull();
+        return wrapper;
+    }
+
+    private void otimizar(TextArea area, String secao) {
+        String texto = area.getValue();
+        if (texto == null || texto.isBlank()) {
+            Notifier.aviso("Preencha o campo antes de usar a IA");
+            return;
+        }
+        String contexto = proposta.getCliente() + " - " + proposta.getSegmento();
+        area.setEnabled(false);
+
+        new Thread(() -> {
+            try {
+                String melhor = iaService.otimizarTexto(secao, texto, contexto);
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    area.setValue(melhor);
+                    area.setEnabled(true);
+                    Notifier.sucesso("Texto otimizado com IA!");
+                }));
+            } catch (Exception ex) {
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    area.setEnabled(true);
+                    Notifier.erro("Erro na IA: " + ex.getMessage());
+                }));
+            }
+        }).start();
     }
 
     private Component secaoLogo() {
@@ -434,7 +482,10 @@ public class PropostaEditorView extends HorizontalLayout implements HasUrlParame
         });
         addTodos.addThemeVariants(ButtonVariant.LUMO_TERTIARY);
 
-        HorizontalLayout barra = new HorizontalLayout(adicionar, selectCatalogo, addTodos);
+        Button ideiasIa = new Button("Gerar ideias com IA", VaadinIcon.MAGIC.create(), e -> gerarIdeiasItens());
+        ideiasIa.addThemeVariants(ButtonVariant.LUMO_CONTRAST);
+
+        HorizontalLayout barra = new HorizontalLayout(adicionar, selectCatalogo, addTodos, ideiasIa);
         barra.setAlignItems(Alignment.CENTER);
         barra.setWidthFull();
         return barra;
@@ -446,6 +497,35 @@ public class PropostaEditorView extends HorizontalLayout implements HasUrlParame
         for (ItemProposta item : itens) {
             editorItens.add(cardItem(item));
         }
+    }
+
+    private void gerarIdeiasItens() {
+        if (proposta.getCliente() == null || proposta.getCliente().isBlank()) {
+            Notifier.aviso("Preencha o cliente para gerar ideias com IA");
+            return;
+        }
+
+        new Thread(() -> {
+            try {
+                var ideias = iaService.gerarIdeiasItens(
+                        proposta.getCliente(),
+                        proposta.getSegmento() != null ? proposta.getSegmento() : "",
+                        proposta.getTitulo());
+                getUI().ifPresent(ui -> ui.access(() -> {
+                    for (var ideia : ideias) {
+                        ItemProposta item = new ItemProposta(ideia.getNome(), BigDecimal.valueOf(ideia.getQuantidade()),
+                                ideia.getUnidade(), ideia.getValorUnitario());
+                        item.setDetalhe(ideia.getDescricao());
+                        itens.add(item);
+                    }
+                    redesenharItens();
+                    atualizarPreview();
+                    Notifier.sucesso("Ideias da IA adicionadas!");
+                }));
+            } catch (Exception ex) {
+                getUI().ifPresent(ui -> ui.access(() -> Notifier.erro("Erro na IA: " + ex.getMessage())));
+            }
+        }).start();
     }
 
     private Component cardItem(ItemProposta item) {
