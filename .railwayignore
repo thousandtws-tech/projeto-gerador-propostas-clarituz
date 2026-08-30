@@ -1,0 +1,9 @@
+data/
+target/
+.idea/
+.vscode/
+.github/
+.mvn/
+.gitpod*
+run.log
+*.log

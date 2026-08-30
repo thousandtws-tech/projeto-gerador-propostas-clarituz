@@ -1,0 +1,1404 @@
+/* ==========================================================================
+   Clarituz — Identidade visual
+   ========================================================================== */
+
+:root {
+  --cz-accent: #ff4a1c;
+  --cz-radius: 14px;
+  --lumo-font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+
+  /* Tema claro padrão */
+  --lumo-base-color: #ffffff;
+  --lumo-body-text-color: #1f2937;
+  --lumo-header-text-color: #0b0b0d;
+  --lumo-secondary-text-color: #6b7280;
+  --lumo-tertiary-text-color: #9ca3af;
+  --lumo-primary-color: var(--cz-accent);
+  --lumo-primary-text-color: var(--cz-accent);
+  --lumo-primary-color-50pct: rgba(255, 74, 28, 0.5);
+  --lumo-primary-color-10pct: rgba(255, 74, 28, 0.12);
+  --lumo-contrast-5pct: #f3f4f6;
+  --lumo-contrast-10pct: #e5e7eb;
+  --lumo-contrast-20pct: #d1d5db;
+  --lumo-contrast-30pct: #9ca3af;
+  --lumo-contrast-50pct: #6b7280;
+  --lumo-contrast-70pct: #4b5563;
+  --lumo-contrast-90pct: #1f2937;
+  --lumo-contrast-100pct: #0b0b0d;
+  --lumo-contrast: #0b0b0d;
+  --lumo-success-color: #10b981;
+  --lumo-success-text-color: #10b981;
+  --lumo-error-color: var(--cz-accent);
+  --lumo-error-text-color: var(--cz-accent);
+}
+
+html,
+body {
+  background: #f3f3f5;
+  color: #0b0b0d;
+  font-family: var(--lumo-font-family);
+}
+
+/* --- Marca e Logo ----------------------------------------------------------- */
+
+.cz-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cz-brand-mark {
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 9px;
+  background: var(--cz-accent);
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.cz-brand-name {
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.cz-brand-sub {
+  letter-spacing: 0.42em;
+  text-transform: uppercase;
+  font-size: 0.6rem;
+  color: #9a9995;
+}
+
+.cz-custom-logo {
+  max-height: 52px;
+  max-width: 220px;
+  object-fit: contain;
+  display: block;
+}
+
+.cz-btn-whatsapp {
+  background: #25d366 !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  border-radius: 10px !important;
+}
+
+.cz-btn-whatsapp:hover {
+  background: #20bd5a !important;
+}
+
+.cz-public-toolbar {
+  background: #ffffff;
+  border: 1px solid rgba(11, 11, 13, 0.12);
+  border-radius: var(--cz-radius);
+}
+
+/* --- Estruturas ----------------------------------------------------------- */
+
+.cz-shell {
+  padding: 1.5rem clamp(1rem, 4vw, 2.5rem);
+}
+
+.cz-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.68rem;
+  color: var(--cz-accent);
+  font-weight: 700;
+}
+
+.cz-muted {
+  color: #696970;
+}
+
+.cz-card {
+  background: #ffffff;
+  border: 1px solid rgba(11, 11, 13, 0.12);
+  border-left: 3px solid rgba(255, 74, 28, 0.4);
+  border-radius: var(--cz-radius);
+  padding: 1.25rem 1.35rem;
+}
+
+.cz-section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.4rem;
+  color: #0b0b0d;
+  padding-left: 0.75rem;
+  border-left: 3px solid var(--cz-accent);
+}
+
+.cz-section-title::before {
+  display: none;
+}
+
+.cz-divider {
+  height: 1px;
+  background: var(--cz-accent);
+  border: 0;
+  margin: 1.25rem 0;
+}
+
+.cz-lgpd-box {
+  background: #ffffff;
+  border: 1px solid rgba(255, 74, 28, 0.22);
+  border-left: 3px solid var(--cz-accent);
+  border-radius: var(--cz-radius);
+  padding: 1.1rem 1.35rem;
+}
+
+.cz-lgpd-text {
+  color: #696970;
+  font-size: 0.83rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+/* --- Preview -------------------------------------------------------------- */
+
+.cz-preview {
+  background: #ffffff;
+  overflow: visible;
+  color: #1f2937;
+}
+
+.cz-preview-pane {
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+}
+
+/* --- Editor: layout de 2 colunas ---------------------------------------- */
+
+.cz-editor-root {
+  display: flex !important;
+  height: 100vh !important;
+  overflow: hidden !important;
+  background: #f3f3f5;
+}
+
+.cz-editor-form {
+  flex: 0 0 52% !important;
+  max-width: 52% !important;
+  overflow-y: auto;
+  padding: 1.5rem clamp(1rem, 3vw, 2rem) !important;
+  border-right: 1px solid rgba(11, 11, 13, 0.1);
+  background: #ffffff;
+  color: #0b0b0d;
+}
+
+/* Fundo do viewer: branco gelo */
+.cz-pdf-viewer {
+  flex: 1 1 48% !important;
+  overflow-y: auto;
+  padding: 1rem clamp(0.75rem, 2vw, 1.5rem);
+  background:
+    linear-gradient(rgba(11,11,13,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(11,11,13,0.04) 1px, transparent 1px),
+    #eef1f5;
+  background-size: 24px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  color: #1f2937;
+
+  /* Tema claro/branco gelo */
+  --lumo-base-color: #ffffff;
+  --lumo-body-text-color: #1f2937;
+  --lumo-header-text-color: #0b0b0d;
+  --lumo-secondary-text-color: #6b7280;
+  --lumo-tertiary-text-color: #9ca3af;
+  --lumo-primary-color: var(--cz-accent);
+  --lumo-primary-text-color: var(--cz-accent);
+  --lumo-primary-color-50pct: rgba(255, 74, 28, 0.5);
+  --lumo-primary-color-10pct: rgba(255, 74, 28, 0.12);
+  --lumo-contrast-5pct: #f3f4f6;
+  --lumo-contrast-10pct: #e5e7eb;
+  --lumo-contrast-20pct: #d1d5db;
+  --lumo-contrast-30pct: #9ca3af;
+  --lumo-contrast-50pct: #6b7280;
+  --lumo-contrast-70pct: #4b5563;
+  --lumo-contrast-90pct: #1f2937;
+  --lumo-contrast-100pct: #0b0b0d;
+  --lumo-contrast: #0b0b0d;
+  --lumo-success-color: #10b981;
+  --lumo-success-text-color: #10b981;
+  --lumo-error-color: var(--cz-accent);
+  --lumo-error-text-color: var(--cz-accent);
+}
+
+/* Página A4 com sombra de documento */
+.cz-pdf-page {
+  width: 100%;
+  max-width: 960px;
+  min-height: 900px;
+  background: #ffffff;
+  border: 1px solid #e2e6eb;
+  border-radius: 12px;
+  box-shadow:
+    0 4px 40px rgba(11, 11, 13, 0.08),
+    0 0 0 1px rgba(11, 11, 13, 0.04);
+  overflow: hidden;
+}
+
+/* Barra de zoom/controle no topo do viewer */
+.cz-pdf-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.5rem 1rem;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e6eb;
+  border-radius: 6px 6px 0 0;
+  font-size: 0.72rem;
+  color: #6b7280;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.cz-pdf-toolbar vaadin-button,
+.cz-pdf-toolbar vaadin-button[theme~="tertiary"],
+.cz-pdf-toolbar vaadin-button[theme~="small"] {
+  color: #6b7280 !important;
+  --lumo-primary-text-color: #6b7280;
+}
+
+.cz-pdf-toolbar vaadin-button:hover,
+.cz-pdf-toolbar vaadin-button[theme~="tertiary"]:hover {
+  background: rgba(11, 11, 13, 0.04) !important;
+  color: #1f2937 !important;
+}
+
+.cz-hero {
+  position: relative;
+  padding: 2.2rem clamp(1.25rem, 3vw, 2.5rem);
+  background: #f6f8fa;
+  border-bottom: 1px solid #e2e6eb;
+  color: #1f2937;
+}
+
+.cz-hero-title {
+  font-size: clamp(1.15rem, 2.4vw, 1.8rem);
+  line-height: 1.14;
+  letter-spacing: -0.03em;
+  font-weight: 800;
+  margin: 0.4rem 0 0.5rem;
+  color: #0b0b0d;
+}
+
+.cz-hero-claim {
+  font-size: 1.05rem;
+  color: #6b7280;
+  max-width: 48ch;
+  margin: 0;
+}
+
+.cz-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.75rem 1.5rem;
+  margin-top: 1.25rem;
+}
+
+.cz-meta > div {
+  min-width: 0;
+}
+
+.cz-meta-wide {
+  grid-column: span 2;
+}
+
+.cz-meta-label {
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.6rem;
+  color: var(--lumo-contrast-60pct);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.cz-meta-value {
+  font-size: 0.92rem;
+  color: var(--lumo-contrast-100pct);
+  font-weight: 600;
+  display: block;
+  overflow-wrap: break-word;
+  word-break: normal;
+  line-height: 1.4;
+}
+
+/* --- Bloco de contato (footer) --- */
+.cz-contato {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.cz-contato > div {
+  min-width: 0;
+}
+
+.cz-body {
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+}
+
+.cz-text {
+  color: var(--lumo-contrast-70pct);
+  line-height: 1.65;
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+.cz-chip {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: 1px solid var(--lumo-contrast-20pct);
+  color: var(--lumo-contrast-70pct);
+}
+
+.cz-chip-accent {
+  background: var(--lumo-primary-color-10pct);
+  border-color: var(--lumo-primary-color-50pct);
+  color: var(--lumo-primary-color);
+}
+
+.cz-chip-success {
+  background: rgba(61, 220, 151, 0.14);
+  border-color: rgba(61, 220, 151, 0.4);
+  color: var(--lumo-success-color);
+  display: inline-flex;
+  align-items: center;
+}
+
+.cz-pulse-green {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--lumo-success-color);
+  box-shadow: 0 0 0 rgba(61, 220, 151, 0.8);
+  animation: czPulseGreen 1.8s infinite;
+  margin-right: 0.45rem;
+  flex-shrink: 0;
+}
+
+@keyframes czPulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 rgba(61, 220, 151, 0.8);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(61, 220, 151, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(61, 220, 151, 0);
+  }
+}
+
+/* Linha do tempo de fases */
+.cz-phase {
+  position: relative;
+  padding: 0 0 1.1rem 1.4rem;
+  border-left: 1px solid rgba(154, 153, 149, 0.18);
+}
+
+.cz-phase:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.cz-phase::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cz-accent);
+}
+
+.cz-phase-name {
+  font-weight: 700;
+  color: var(--lumo-contrast-100pct);
+}
+
+/* Bloco de investimento */
+.cz-total-box {
+  border: 1px solid #e2e6eb;
+  background: #f6f8fa;
+  border-radius: var(--cz-radius);
+  padding: 1.1rem 1.35rem;
+}
+
+.cz-total-value {
+  font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--lumo-contrast-100pct);
+}
+
+.cz-total-line {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  color: var(--lumo-contrast-70pct);
+  font-size: 0.9rem;
+  padding: 0.15rem 0;
+}
+
+.cz-item-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.85rem 0;
+  border-bottom: 1px solid var(--lumo-contrast-10pct);
+}
+
+.cz-item-row:last-child {
+  border-bottom: 0;
+}
+
+.cz-item-name {
+  font-weight: 600;
+  color: var(--lumo-contrast-100pct);
+}
+
+.cz-item-detail {
+  color: var(--lumo-contrast-60pct);
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+}
+
+.cz-item-value {
+  white-space: nowrap;
+  font-weight: 700;
+  color: var(--lumo-contrast-100pct);
+}
+
+/* --- Ajustes de componentes ---------------------------------------------- */
+
+vaadin-grid {
+  --lumo-base-color: transparent;
+  border: 1px solid rgba(154, 153, 149, 0.18);
+  border-radius: var(--cz-radius);
+}
+
+/* --- Notificações (Notifier) — padrão Vaadin ----------------------------- */
+
+.cz-notif {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.1rem 0;
+}
+
+.cz-notif-icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.cz-notif-text {
+  font-size: 0.88rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+vaadin-button[theme~="primary"] {
+  background: var(--lumo-primary-color);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* --- Remoção de barras de rolagem nativas (Scroll invisível universal) ------ */
+
+html, body, :root, :host, *, *::before, *::after {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar,
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+:host::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+  background: transparent !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+}
+
+::-webkit-scrollbar-track,
+*::-webkit-scrollbar-track,
+html::-webkit-scrollbar-track,
+body::-webkit-scrollbar-track,
+:host::-webkit-scrollbar-track {
+  background: transparent !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::-webkit-scrollbar-thumb,
+*::-webkit-scrollbar-thumb,
+html::-webkit-scrollbar-thumb,
+body::-webkit-scrollbar-thumb,
+:host::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::-webkit-scrollbar-corner,
+*::-webkit-scrollbar-corner {
+  background: transparent !important;
+  display: none !important;
+}
+
+/* --- Preview do editor vs Preview do cliente ------------------- */
+
+/* Preview no editor: mantém branco gelo */
+.cz-pdf-viewer .cz-card,
+.cz-pdf-viewer .cz-lgpd-box {
+  background: #ffffff !important;
+  border: 1px solid #e2e6eb !important;
+  border-left: 3px solid var(--lumo-primary-color) !important;
+}
+
+.cz-pdf-viewer .cz-lgpd-text,
+.cz-pdf-viewer .cz-text {
+  color: #4b5563 !important;
+}
+
+.cz-pdf-viewer .cz-hero {
+  background: #f6f8fa !important;
+  border-bottom: 1px solid #e2e6eb !important;
+}
+
+/* Preview claro do cliente permanece como está abaixo */
+
+.cz-client-preview {
+  background: #ffffff !important;
+  color: #0b0b0d !important;
+  font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif !important;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: -0.005em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.cz-client-preview .cz-preview {
+  background: #ffffff !important;
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-hero {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-radius: 12px !important;
+}
+
+.cz-client-preview .cz-block {
+  border: 1px solid rgba(0, 0, 0, 0.06) !important;
+  border-radius: 12px !important;
+  padding: 1rem 1.25rem !important;
+  background: #fafafa !important;
+}
+
+.cz-client-preview .cz-hero-title {
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-hero-claim {
+  color: #5a5a62 !important;
+}
+
+.cz-client-preview .cz-eyebrow {
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-section-title {
+  color: #0b0b0d !important;
+  border-left: 0 !important;
+  padding-left: 0 !important;
+}
+
+.cz-client-preview .cz-meta-label {
+  color: #8a8a92 !important;
+}
+
+.cz-client-preview .cz-meta-value {
+  color: #0b0b0d !important;
+  overflow-wrap: break-word !important;
+  word-break: normal !important;
+}
+
+.cz-client-preview .cz-contato {
+  gap: 0.75rem 2.5rem !important;
+}
+
+.cz-client-preview .cz-text {
+  color: #3a3a42 !important;
+  line-height: 1.75 !important;
+}
+
+.cz-client-preview .cz-muted {
+  color: #696970 !important;
+}
+
+.cz-client-preview .cz-card {
+  background: #fafafa !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  border-left: 3px solid #0b0b0d !important;
+}
+
+.cz-client-preview .cz-lgpd-box {
+  background: #fafafa !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  border-left: 3px solid #0b0b0d !important;
+}
+
+.cz-client-preview .cz-lgpd-text {
+  color: #3a3a42 !important;
+  line-height: 1.75 !important;
+}
+
+.cz-client-preview .cz-chip {
+  border: 1px solid rgba(0, 0, 0, 0.18) !important;
+  color: #4a4a52 !important;
+}
+
+.cz-client-preview .cz-chip-accent {
+  background: rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 0, 0, 0.35) !important;
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-chip-success {
+  background: rgba(0, 0, 0, 0.06) !important;
+  border-color: rgba(0, 0, 0, 0.35) !important;
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-pulse-green {
+  background: #0b0b0d !important;
+  box-shadow: 0 0 0 rgba(11, 11, 13, 0.6) !important;
+  animation: czPulseGreenBW 1.8s infinite;
+}
+
+@keyframes czPulseGreenBW {
+  0% {
+    box-shadow: 0 0 0 0 rgba(11, 11, 13, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(11, 11, 13, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(11, 11, 13, 0.6);
+  }
+}
+
+.cz-client-preview .cz-phase {
+  border-left: 1px solid rgba(0, 0, 0, 0.18) !important;
+}
+
+.cz-client-preview .cz-phase::before {
+  background: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-phase-name {
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-total-box {
+  border: 1px solid rgba(0, 0, 0, 0.2) !important;
+  background: #fafafa !important;
+}
+
+.cz-client-preview .cz-total-value {
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-total-line {
+  color: #5a5a62 !important;
+}
+
+.cz-client-preview .cz-item-row {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+}
+
+.cz-client-preview .cz-item-name {
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-item-detail {
+  color: #8a8a92 !important;
+}
+
+.cz-client-preview .cz-item-value {
+  color: #0b0b0d !important;
+}
+
+.cz-client-preview .cz-divider {
+  background: #0b0b0d !important;
+}
+
+/* Logo mantendo cores originais no preview do cliente */
+.cz-client-preview .cz-brand-logo-img,
+.cz-client-preview .cz-custom-logo {
+  filter: none !important;
+}
+
+/* --- Print / Salvar como PDF (Sempre Preto & Branco) ----------------------- */
+
+@media print {
+  @page {
+    margin: 10mm 12mm;
+    size: A4 portrait;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  html, body {
+    background: #ffffff !important;
+    color: #0b0b0d !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .cz-editor-form,
+  .cz-pdf-toolbar,
+  .cz-public-toolbar,
+  vaadin-button,
+  vaadin-dev-tools,
+  vaadin-connection-indicator,
+  #vaadin-dev-tools,
+  .v-system-error {
+    display: none !important;
+  }
+
+  .cz-editor-root {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  .cz-pdf-viewer {
+    display: block !important;
+    padding: 0 !important;
+    background: #ffffff !important;
+    overflow: visible !important;
+    width: 100% !important;
+  }
+
+  .cz-pdf-page {
+    box-shadow: none !important;
+    border: 0 !important;
+    max-width: 100% !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+  }
+
+  .cz-preview,
+  .cz-client-preview,
+  .cz-client-preview .cz-preview {
+    background: #ffffff !important;
+    color: #0b0b0d !important;
+  }
+
+  .cz-brand-mark {
+    background: #0b0b0d !important;
+    color: #ffffff !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .cz-brand-name {
+    color: #0b0b0d !important;
+  }
+
+  .cz-brand-sub {
+    color: #696970 !important;
+  }
+
+  /* Logos mantendo cores originais */
+  .cz-brand-logo-img,
+  .cz-custom-logo {
+    filter: none !important;
+  }
+
+  .cz-hero {
+    background: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 12px !important;
+  }
+
+  .cz-block {
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-radius: 12px !important;
+    padding: 1rem 1.25rem !important;
+  }
+
+  .cz-hero-title {
+    color: #0b0b0d !important;
+  }
+
+  .cz-hero-claim {
+    color: #5a5a62 !important;
+  }
+
+  .cz-eyebrow {
+    color: #0b0b0d !important;
+  }
+
+  .cz-section-title {
+    color: #0b0b0d !important;
+    border-left: 0 !important;
+    padding-left: 0 !important;
+  }
+
+  .cz-meta-label,
+  .cz-item-detail {
+    color: #8a8a92 !important;
+  }
+
+  .cz-meta-value {
+    color: #0b0b0d !important;
+    overflow-wrap: break-word !important;
+    word-break: normal !important;
+  }
+
+  .cz-contato {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 0.6rem 2rem !important;
+  }
+
+  .cz-contato > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  /* No PDF: grid fixo em 2 colunas para layout estável no A4 */
+  .cz-meta {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 0.6rem 1.5rem !important;
+  }
+
+  .cz-meta-wide {
+    grid-column: span 2 !important;
+  }
+
+  .cz-text {
+    color: #3a3a42 !important;
+    line-height: 1.75 !important;
+  }
+
+  .cz-muted {
+    color: #696970 !important;
+  }
+
+  .cz-card {
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    border-left: 3px solid #0b0b0d !important;
+    background: #fafafa !important;
+    border-radius: 12px !important;
+  }
+
+  .cz-lgpd-box {
+    background: #fafafa !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-left: 3px solid #0b0b0d !important;
+    border-radius: 10px !important;
+    padding: 1.1rem 1.35rem !important;
+  }
+
+  .cz-lgpd-text {
+    color: #2a2a30 !important;
+  }
+
+  .cz-chip,
+  .cz-chip-accent,
+  .cz-chip-success {
+    background: rgba(0, 0, 0, 0.06) !important;
+    border: 1px solid rgba(0, 0, 0, 0.25) !important;
+    color: #0b0b0d !important;
+  }
+
+  .cz-pulse-green {
+    background: #0b0b0d !important;
+    box-shadow: none !important;
+    animation: none !important;
+  }
+
+  .cz-phase {
+    border-left: 1px solid rgba(0, 0, 0, 0.18) !important;
+  }
+
+  .cz-phase::before {
+    background: #0b0b0d !important;
+  }
+
+  .cz-phase-name {
+    color: #0b0b0d !important;
+  }
+
+  .cz-total-box {
+    border: 1px solid rgba(0, 0, 0, 0.2) !important;
+    background: #fafafa !important;
+    border-radius: 12px !important;
+  }
+
+  .cz-total-value {
+    color: #0b0b0d !important;
+  }
+
+  .cz-total-line {
+    color: #2a2a30 !important;
+  }
+
+  .cz-item-row {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+  }
+
+  .cz-item-name {
+    color: #0b0b0d !important;
+  }
+
+  .cz-item-value {
+    color: #0b0b0d !important;
+  }
+
+  .cz-divider {
+    background: #0b0b0d !important;
+  }
+
+  .cz-phase, .cz-item-row, .cz-total-box, .cz-lgpd-box {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVIDADE PROFISSIONAL — Desktop, Mac, Tablet, Mobile (Android/iOS)
+   ========================================================================== */
+
+/* --- XL: Desktop large (≥1440px) ----------------------------------------- */
+@media (min-width: 1440px) {
+  .cz-editor-form {
+    flex: 0 0 48% !important;
+    max-width: 48% !important;
+    padding: 2rem clamp(1.5rem, 3vw, 3rem) !important;
+  }
+
+  .cz-pdf-viewer {
+    padding: 1.5rem clamp(1rem, 2vw, 2rem);
+  }
+
+  .cz-pdf-page {
+    max-width: 1100px;
+  }
+
+  .cz-client-preview {
+    max-width: 1200px !important;
+  }
+}
+
+/* --- LG: Desktop / MacBook (1024–1439px) --------------------------------- */
+@media (max-width: 1439px) and (min-width: 1024px) {
+  .cz-editor-form {
+    flex: 0 0 54% !important;
+    max-width: 54% !important;
+  }
+
+  .cz-pdf-viewer {
+    flex: 1 1 46% !important;
+  }
+}
+
+/* --- MD: Tablet / iPad (768–1023px) -------------------------------------- */
+@media (max-width: 1023px) {
+  .cz-editor-root {
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  .cz-editor-form {
+    flex: 1 1 auto !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    height: auto !important;
+    overflow: visible !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(11, 11, 13, 0.1) !important;
+    padding: 1.25rem 1.25rem !important;
+  }
+
+  .cz-pdf-viewer {
+    flex: 1 1 auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: visible !important;
+    padding: 1rem 1rem !important;
+  }
+
+  .cz-pdf-page {
+    max-width: 100% !important;
+    min-height: auto !important;
+  }
+
+  .cz-client-preview {
+    max-width: 100% !important;
+    padding: 1rem !important;
+  }
+
+  .cz-hero {
+    padding: 1.75rem 1.5rem !important;
+  }
+
+  .cz-body {
+    padding: 1.25rem !important;
+  }
+
+  .cz-meta {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .cz-shell {
+    padding: 1rem 1.25rem !important;
+  }
+}
+
+/* --- SM: Mobile grande (481–767px) --------------------------------------- */
+@media (max-width: 767px) {
+  .cz-shell {
+    padding: 0.75rem 1rem !important;
+  }
+
+  .cz-editor-form {
+    padding: 1rem 1rem !important;
+  }
+
+  .cz-pdf-viewer {
+    padding: 0.75rem 0.75rem !important;
+  }
+
+  .cz-pdf-toolbar {
+    padding: 0.4rem 0.75rem !important;
+    font-size: 0.65rem !important;
+  }
+
+  .cz-hero {
+    padding: 1.25rem 1rem !important;
+    border-top: 3px solid var(--cz-accent) !important;
+    border-left: 0 !important;
+  }
+
+  .cz-hero-title {
+    font-size: 1.15rem !important;
+  }
+
+  .cz-hero-claim {
+    font-size: 0.9rem !important;
+  }
+
+  .cz-body {
+    padding: 1rem !important;
+  }
+
+  .cz-block {
+    padding: 0.85rem 1rem !important;
+    margin-bottom: 1.25rem !important;
+  }
+
+  .cz-meta {
+    grid-template-columns: 1fr !important;
+    gap: 0.6rem 1rem !important;
+    margin-top: 1rem !important;
+  }
+
+  .cz-meta-wide {
+    grid-column: span 1 !important;
+  }
+
+  .cz-contato {
+    flex-direction: column !important;
+    gap: 0.6rem 0 !important;
+  }
+
+  .cz-item-row {
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+    padding: 0.7rem 0 !important;
+  }
+
+  .cz-item-value {
+    align-self: flex-end !important;
+  }
+
+  .cz-total-line {
+    flex-direction: column !important;
+    gap: 0.15rem !important;
+  }
+
+  .cz-client-preview {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0.75rem !important;
+  }
+
+  .cz-client-preview .cz-hero {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .cz-client-preview .cz-body {
+    padding: 1rem !important;
+  }
+
+  .cz-client-preview .cz-block {
+    padding: 0.85rem 1rem !important;
+  }
+
+  .cz-custom-logo {
+    max-height: 38px !important;
+    max-width: 160px !important;
+  }
+
+  .cz-brand-mark {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .cz-brand-name {
+    font-size: 0.82rem !important;
+  }
+
+  .cz-brand-sub {
+    font-size: 0.52rem !important;
+  }
+
+  vaadin-notification-card {
+    max-width: calc(100vw - 2rem) !important;
+    width: calc(100vw - 2rem) !important;
+    margin: 0 1rem !important;
+  }
+
+  .cz-phase {
+    padding-left: 1.1rem !important;
+  }
+}
+
+/* --- XS: Mobile compacto (≤480px) ---------------------------------------- */
+@media (max-width: 480px) {
+  .cz-shell {
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  .cz-editor-form {
+    padding: 0.75rem 0.75rem !important;
+  }
+
+  .cz-hero {
+    padding: 1rem 0.75rem !important;
+  }
+
+  .cz-hero-title {
+    font-size: 1.05rem !important;
+    line-height: 1.2 !important;
+  }
+
+  .cz-hero-claim {
+    font-size: 0.85rem !important;
+  }
+
+  .cz-body {
+    padding: 0.75rem !important;
+  }
+
+  .cz-block {
+    padding: 0.75rem 0.85rem !important;
+    border-radius: 10px !important;
+  }
+
+  .cz-meta {
+    gap: 0.5rem 0.75rem !important;
+  }
+
+  .cz-meta-label {
+    font-size: 0.55rem !important;
+  }
+
+  .cz-meta-value {
+    font-size: 0.85rem !important;
+  }
+
+  .cz-total-value {
+    font-size: 1.15rem !important;
+  }
+
+  .cz-client-preview {
+    padding: 0.5rem !important;
+  }
+
+  .cz-client-preview .cz-hero {
+    padding: 1rem 0.75rem !important;
+  }
+
+  .cz-client-preview .cz-body {
+    padding: 0.75rem !important;
+  }
+
+  .cz-client-preview .cz-block {
+    padding: 0.75rem 0.85rem !important;
+  }
+
+  .cz-custom-logo {
+    max-height: 32px !important;
+    max-width: 140px !important;
+  }
+
+  vaadin-notification-card {
+    max-width: calc(100vw - 1.5rem) !important;
+    width: calc(100vw - 1.5rem) !important;
+    margin: 0 0.75rem !important;
+  }
+
+  .cz-notif-text {
+    font-size: 0.82rem !important;
+  }
+}
+
+/* --- iOS safe areas (notch / dynamic island) ------------------------------ */
+@supports (padding: env(safe-area-inset-top)) {
+  .cz-shell {
+    padding-top: max(1.5rem, env(safe-area-inset-top)) !important;
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom)) !important;
+    padding-left: max(1rem, env(safe-area-inset-left)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right)) !important;
+  }
+
+  .cz-editor-form {
+    padding-top: max(1rem, env(safe-area-inset-top)) !important;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom)) !important;
+    padding-left: max(1rem, env(safe-area-inset-left)) !important;
+    padding-right: max(1rem, env(safe-area-inset-right)) !important;
+  }
+
+  .cz-client-preview {
+    padding-top: max(0.75rem, env(safe-area-inset-top)) !important;
+    padding-bottom: max(0.75rem, env(safe-area-inset-bottom)) !important;
+    padding-left: max(0.75rem, env(safe-area-inset-left)) !important;
+    padding-right: max(0.75rem, env(safe-area-inset-right)) !important;
+  }
+}
+
+/* --- Ajustes para telas touch (hover none) — Android/iOS ------------------ */
+@media (hover: none) and (pointer: coarse) {
+  vaadin-button {
+    min-height: 40px !important;
+  }
+
+  vaadin-grid::part(cell) {
+    min-height: 44px !important;
+  }
+}
+
+/* --- Grid da lista de propostas: responsivo ------------------------------- */
+@media (max-width: 1023px) and (min-width: 768px) {
+  .cz-lista-barra {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .cz-lista-barra > * {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .cz-lista-barra {
+    flex-direction: column !important;
+    gap: 0.5rem !important;
+  }
+
+  .cz-lista-barra > * {
+    width: 100% !important;
+  }
+
+  vaadin-grid::part(header-cell) {
+    font-size: 0.7rem !important;
+  }
+
+  vaadin-grid::part(body-cell) {
+    font-size: 0.82rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  vaadin-grid::part(header-cell),
+  vaadin-grid::part(body-cell) {
+    padding: 0.4rem 0.5rem !important;
+  }
+}
+
+/* --- Ajustes para telas retina / high-DPI (Mac) --------------------------- */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .cz-pdf-page {
+    box-shadow:
+      0 4px 60px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.06) !important;
+  }
+}
+
+/* --- Orientação landscape em mobile (teclado aberto, etc) ----------------- */
+@media (max-width: 1023px) and (orientation: landscape) {
+  .cz-editor-root {
+    flex-direction: row !important;
+    height: 100vh !important;
+    overflow: hidden !important;
+  }
+
+  .cz-editor-form {
+    flex: 0 0 50% !important;
+    max-width: 50% !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+    border-right: 1px solid rgba(11, 11, 13, 0.1) !important;
+    border-bottom: 0 !important;
+  }
+
+  .cz-pdf-viewer {
+    flex: 1 1 50% !important;
+    height: 100vh !important;
+    overflow-y: auto !important;
+  }
+}
