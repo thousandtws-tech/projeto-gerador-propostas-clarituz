@@ -48,10 +48,9 @@ public class PropostaPreview extends Div {
             elementoMarca = new Marca();
         }
 
-        Div topo = new Div(elementoMarca);
-        topo.addClassName("cz-hero-topo");
-        topo.getStyle().set("display", "flex").set("justify-content", "space-between")
-                .set("align-items", "center").set("gap", "1rem").set("flex-wrap", "wrap");
+        Div colunaLogo = new Div(elementoMarca);
+        colunaLogo.addClassName("cz-hero-logo");
+        colunaLogo.getStyle().set("flex", "0 0 auto");
 
         Span eyebrow = new Span("Proposta comercial");
         eyebrow.addClassName("cz-eyebrow");
@@ -59,12 +58,14 @@ public class PropostaPreview extends Div {
         H1 titulo = new H1(vazioOu(p.getTitulo(), "Título da proposta"));
         titulo.addClassName("cz-hero-title");
 
-        hero.add(topo, new Div(eyebrow), titulo);
+        Div colunaConteudo = new Div(new Div(eyebrow), titulo);
+        colunaConteudo.addClassName("cz-hero-content");
+        colunaConteudo.getStyle().set("flex", "1 1 auto");
 
         if (preenchido(p.getChamada())) {
             Paragraph claim = new Paragraph(p.getChamada());
             claim.addClassName("cz-hero-claim");
-            hero.add(claim);
+            colunaConteudo.add(claim);
         }
 
         Div meta = new Div();
@@ -83,7 +84,16 @@ public class PropostaPreview extends Div {
             meta.add(metaItem("Prazo", p.getPrazoExecucao()));
         }
         meta.add(metaItem("Válida até", Formatos.data(p.getValidaAte())));
-        hero.add(meta);
+        colunaConteudo.add(meta);
+
+        Div linha = new Div(colunaConteudo, colunaLogo);
+        linha.addClassName("cz-hero-row");
+        linha.getStyle().set("display", "flex")
+                .set("gap", "2rem")
+                .set("align-items", "flex-start")
+                .set("flex-wrap", "wrap");
+
+        hero.add(linha);
     }
 
     private void renderCorpo(Proposta p) {
